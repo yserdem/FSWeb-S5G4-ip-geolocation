@@ -13505,10 +13505,70 @@ function _ipAdresimiAl() {
   }));
   return _ipAdresimiAl.apply(this, arguments);
 }
-_axios.default.get('https://apis.ergineer.com/ipgeoapi/178.233.26.115').then(function (response) {
+var data = _axios.default.get('https://apis.ergineer.com/ipgeoapi/178.233.26.115').then(function (response) {
   console.log(response.data);
-  var myData = response.data;
+  cardConstructor(response.data);
 });
+var cardConstructor = function cardConstructor(data) {
+  var card = document.createElement("div");
+  card.classList.add("card");
+  var flag = document.createElement("img");
+  flag.setAttribute("src", data === null || data === void 0 ? void 0 : data.ülkebayrağı);
+  card.append(flag);
+  var card_info = document.createElement("div");
+  card_info.classList.add("card-info");
+  card.append(card_info);
+  var IP = document.createElement("h3");
+  IP.classList.add("ip");
+  IP.textContent = "IP: ".concat(data === null || data === void 0 ? void 0 : data.sorgu);
+  card_info.append(IP);
+  var country = document.createElement("p");
+  country.classList.add("ulke");
+  country.textContent = "\xFClke bilgisi: ".concat(data === null || data === void 0 ? void 0 : data.ülke);
+  card_info.append(country);
+  var enlem = document.createElement("p");
+  enlem.textContent = "Enlem: ".concat(data === null || data === void 0 ? void 0 : data.enlem, " Boylam: ").concat(data === null || data === void 0 ? void 0 : data.boylam);
+  card_info.append(enlem);
+  var city = document.createElement("p");
+  city.textContent = "\u015Eehir: ".concat(data === null || data === void 0 ? void 0 : data.şehir);
+  card_info.append(city);
+  var time_zone = document.createElement("p");
+  time_zone.textContent = "Saat dilimi: ".concat(data === null || data === void 0 ? void 0 : data.saatdilimi);
+  card_info.append(time_zone);
+  var currency = document.createElement("p");
+  currency.textContent = "Para Birimi: ".concat(data === null || data === void 0 ? void 0 : data.parabirimi);
+  card_info.append(currency);
+  var ISP = document.createElement("p");
+  ISP.textContent = "ISP: ".concat(data === null || data === void 0 ? void 0 : data.isp);
+  card_info.append(ISP);
+  cardContainer.append(card);
+};
+var cardContainer = document.querySelector(".cards");
+function setCardData() {
+  return _setCardData.apply(this, arguments);
+}
+function _setCardData() {
+  _setCardData = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee2() {
+    return _regeneratorRuntime().wrap(function _callee2$(_context2) {
+      while (1) switch (_context2.prev = _context2.next) {
+        case 0:
+          _context2.next = 2;
+          return ipAdresimiAl();
+        case 2:
+          _axios.default.get('https://apis.ergineer.com/ipgeoapi/' + benimIP).then(function (response) {
+            cardContainer.append(cardConstructor(response.data));
+          }).catch(function (error) {
+            console.error("error");
+          });
+        case 3:
+        case "end":
+          return _context2.stop();
+      }
+    }, _callee2);
+  }));
+  return _setCardData.apply(this, arguments);
+}
+setCardData();
 },{"axios":"node_modules/axios/index.js","babel-core/register":"node_modules/babel-core/register.js","babel-polyfill":"node_modules/babel-polyfill/lib/index.js"}],"node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
@@ -13534,7 +13594,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "50650" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "49846" + '/');
   ws.onmessage = function (event) {
     checkedAssets = {};
     assetsToAccept = [];
