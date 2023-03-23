@@ -1,5 +1,5 @@
 //axios import buraya gelecek
-
+import axios from 'axios';
 var benimIP;
 
 
@@ -70,3 +70,13 @@ async function ipAdresimiAl(){
 
 
 //kodlar buraya gelecek
+
+axios.get('https://apis.ergineer.com/ipgeoapi/178.233.26.115')
+.then(response => {
+	console.log(response.data);
+	const myData = response.data
+})
+
+function (params) {
+	
+}
